@@ -40,6 +40,6 @@ class ApiHelper {
   }
 }
 
-const api = new ApiHelper("https://your-api-base-url.com");
+const api = new ApiHelper("https://voeja-scrum-pocker-server.onrender.com");
 
 export default api;

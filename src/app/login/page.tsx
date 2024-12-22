@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
+
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { loginSchema, loginSchemaProps } from "@/schemas/login.schema";
 import React from "react";
@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/context/userContext";
 import Image from "next/image";
 import { useToast } from "@/hooks/use-toast";
+import { GameButton } from "@/components/game-button";
 
 const LoginPage = () => {
   const { toast } = useToast();
@@ -74,7 +75,7 @@ const LoginPage = () => {
                     <FormItem>
                       <Input
                         {...field}
-                        className={`${
+                        className={`w-[340px] ${
                           fieldState.error ? "border-red-500" : ""
                         }`}
                         placeholder="Your Name"
@@ -84,9 +85,9 @@ const LoginPage = () => {
                     </FormItem>
                   )}
                 />
-                <Button className="w-full mt-5" type="submit">
+                <GameButton variant="solid" className="w-full" type="submit">
                   Login
-                </Button>
+                </GameButton>
               </Flex>
             </form>
           </Form>

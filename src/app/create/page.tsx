@@ -63,7 +63,7 @@ export default function CreateTable() {
       const payload = { ...data, header: username, votes: selectedVotes };
       const response = await createTable(payload);
       setVotes(response.votes);
-      router.push(response.tableUrl);
+      router.push(`http://localhost:3000/room/${response.tableId}`);
     } catch (error) {
       console.error(error);
     }
@@ -116,6 +116,7 @@ export default function CreateTable() {
                             ([key, votes]) => (
                               <Button
                                 key={key}
+                                type="button"
                                 variant="outline"
                                 onClick={() => handlePredefinedSelect(votes)}
                                 className={`${
@@ -134,7 +135,7 @@ export default function CreateTable() {
                         <h3 className="text-sm font-medium mt-4">
                           Selected Votes (click to remove):
                         </h3>
-                        <Flex className="items-center text-start space-y-2 mt-2">
+                        <Flex className="items-center text-start flex-wrap space-y-2 mt-2">
                           {selectedVotes.map((vote) => (
                             <Badge
                               key={vote}

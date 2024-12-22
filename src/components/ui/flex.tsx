@@ -8,7 +8,7 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
 
 const Flex = ({ className, children, ...rest }: Props) => {
   return (
-    <div className={cn(`${className}`)} {...rest}>
+    <div className={cn(`flex ${className}`)} {...rest}>
       {children}
     </div>
   );

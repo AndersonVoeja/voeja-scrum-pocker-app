@@ -1,13 +1,5 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+// Remove the middleware function from this file
 
-export function middleware(request: NextRequest) {
-  const url = request.nextUrl.clone();
-
-  if (url.pathname === "/") {
-    url.pathname = "/table";
-    return NextResponse.redirect(url);
-  }
-
-  return NextResponse.next();
+export default function Page() {
+  return <div>Welcome to the Scrum Poker App</div>;
 }

@@ -63,7 +63,7 @@ export default function CreateTable() {
       const payload = { ...data, header: username, votes: selectedVotes };
       const response = await createTable(payload);
       setVotes(response.votes);
-      router.push(`http://localhost:3000/room/${response.tableId}`);
+      router.push(`/room/${response.tableId}`);
     } catch (error) {
       console.error(error);
     }

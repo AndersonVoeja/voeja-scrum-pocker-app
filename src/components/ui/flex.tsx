@@ -6,7 +6,7 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
 };
 
-const SimpleFlex = ({ className, children, ...rest }: Props) => {
+const Flex = ({ className, children, ...rest }: Props) => {
   return (
     <div className={cn(`${className}`)} {...rest}>
       {children}
@@ -14,4 +14,4 @@ const SimpleFlex = ({ className, children, ...rest }: Props) => {
   );
 };
 
-export default SimpleFlex;
+export default Flex;

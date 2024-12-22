@@ -4,6 +4,7 @@ import "./globals.css";
 import { UserProvider } from "@/context/userContext";
 import { ToastProvider } from "@/components/ui/toast";
 import { Toaster } from "@/components/ui/toaster";
+import { RoomProvider } from "@/context/roomContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,7 +27,9 @@ export default function RootLayout({
         className={`${inter.variable} ${inter.variable} antialiased h-screen w-screen text-xl`}
       >
         <ToastProvider>
-          <UserProvider>{children}</UserProvider>
+          <RoomProvider>
+            <UserProvider>{children}</UserProvider>
+          </RoomProvider>
         </ToastProvider>
         <Toaster />
       </body>

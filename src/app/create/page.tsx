@@ -25,8 +25,11 @@ import { Badge } from "@/components/ui/badge";
 import { useUser } from "@/context/userContext";
 import { useRouter } from "next/navigation";
 import { createTable } from "@/services/table.create";
+import { useRoom } from "@/context/roomContext";
 
 export default function CreateTable() {
+  const { setVotes } = useRoom();
+
   const [selectedVotes, setSelectedVotes] = useState<number[]>([]);
   const { username } = useUser();
   const router = useRouter();
@@ -59,6 +62,7 @@ export default function CreateTable() {
     try {
       const payload = { ...data, header: username, votes: selectedVotes };
       const response = await createTable(payload);
+      setVotes(response.votes);
       router.push(response.tableUrl);
     } catch (error) {
       console.error(error);

@@ -5,6 +5,6 @@ import { tableSchemaProps } from "@/schemas/table.schema";
 export const createTable = async (
   payload: tableSchemaProps
 ): Promise<Table> => {
-  const { data } = await api.post<Table>("/table", payload);
+  const { data } = await api.post<Table>("/rooms", payload);
   return data;
 };

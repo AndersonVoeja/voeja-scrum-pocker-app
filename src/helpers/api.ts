@@ -1,3 +1,4 @@
+
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 class ApiHelper {
@@ -43,3 +44,4 @@ class ApiHelper {
 const api = new ApiHelper("https://voeja-scrum-pocker-server.onrender.com");
 
 export default api;
+

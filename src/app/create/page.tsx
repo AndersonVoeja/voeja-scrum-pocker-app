@@ -23,10 +23,13 @@ import { Button } from "@/components/ui/button";
 import Flex from "@/components/ui/flex";
 import { Badge } from "@/components/ui/badge";
 import { useUser } from "@/context/userContext";
+import { useRouter } from "next/navigation";
+import { createTable } from "@/services/table.create";
 
 export default function CreateTable() {
   const [selectedVotes, setSelectedVotes] = useState<number[]>([]);
   const { username } = useUser();
+  const router = useRouter();
   const form = useForm<tableSchemaProps>({
     resolver: zodResolver(tableSchema),
     defaultValues: {
@@ -52,9 +55,14 @@ export default function CreateTable() {
     form.setValue("votes", updatedVotes);
   };
 
-  const onSubmit = (data: tableSchemaProps) => {
-    const payload = { ...data, header: username, votes: selectedVotes };
-    console.log(payload);
+  const onSubmit = async (data: tableSchemaProps) => {
+    try {
+      const payload = { ...data, header: username, votes: selectedVotes };
+      const response = await createTable(payload);
+      router.push(response.tableUrl);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
